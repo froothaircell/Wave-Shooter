@@ -1,32 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using GameResources.Player;
 using UnityEngine;
 
-// Change to non monobehavior after you have a pool manager
-public class Gun : MonoBehaviour, IGun
+namespace GameResources.Player
 {
-    public float bulletSpeed = 10f;
-    public GameObject bullet;
-    private Transform _firePoint;
-    
-    public void OnInit()
+    // Change to non monobehavior after you have a pool manager
+    public class Gun : MonoBehaviour, IGun
     {
-        _firePoint = transform.GetChild(0);
-        GetComponentInParent<GunController>().OnFire += FireBullet;
-    }
+        public float bulletSpeed = 10f;
+        public GameObject bullet;
+        public GameObject specBullet;
+        private Transform _firePoint;
+        
+        public void OnInit()
+        {
+            _firePoint = transform.GetChild(0);
+            GunController controller = GetComponentInParent<GunController>();
+            controller.OnFire += FireBullet;
+            controller.OnFireSpec += FireSpecialBullet;
+        }
 
-    public void OnDeInit()
-    {
-        GetComponentInParent<GunController>().OnFire -= FireBullet;
-    }
+        public void OnDeInit()
+        {
+            
+        }
 
-    private void FireBullet()
-    {
-        Debug.Log($"Fired bullet with the current direction: {_firePoint.up * bulletSpeed}");
-        var projectile = Instantiate(bullet, _firePoint.position, _firePoint.rotation);
-        projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
-    }
+        private void FireBullet()
+        {
+            Debug.Log($"Fired bullet with the current direction: {_firePoint.up * bulletSpeed}");
+            var projectile = Instantiate(bullet, _firePoint.position, _firePoint.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
+        }
 
+        private void FireSpecialBullet()
+        {
+            Debug.Log($"Fired special bullet with the current direction: {_firePoint.up * bulletSpeed}");
+            var projectile = Instantiate(specBullet, _firePoint.position, _firePoint.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
+        }
+    }
 }

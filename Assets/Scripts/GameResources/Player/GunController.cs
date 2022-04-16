@@ -1,29 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using GameResources.Player;
 using UnityEngine;
 
-public class GunController : MonoBehaviour
+namespace GameResources.Player
 {
-    public Action OnFire;
+    public class GunController : MonoBehaviour
+    {
+        public Action OnFire;
+        public Action OnFireSpec;
 
-    private void Start()
-    {
-        GetComponentInChildren<IGun>().OnInit();
-    }
-    
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
+        private void Start()
         {
-            Debug.Log("Fire1 detected");
-            OnFire.Invoke();
+            GetComponentInChildren<IGun>().OnInit();
         }
-    }
+        
+        private void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                OnFire.Invoke();
+            }
 
-    private void OnDisable()
-    {
-        GetComponentInChildren<IGun>().OnDeInit();
+            if (Input.GetButtonDown("Fire2"))
+            {
+                OnFireSpec.Invoke();
+            }
+        }
+
+        private void OnDisable()
+        {
+            OnFire = null;
+            OnFireSpec = null;
+        }
     }
 }
