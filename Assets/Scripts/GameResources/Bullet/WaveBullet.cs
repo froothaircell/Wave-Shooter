@@ -17,7 +17,6 @@ namespace GameResources.Bullet
         private float _modulationFrequencyFactor = 1f / 3f; // Defines how much larger will the modulation wave be
         private float _amplitudeFactor = 1f; // For base amplitude modifications
         private float _frequencyFactor = 6f; // For base frequency modifications
-        private float _localTime = 0f; // Every bullet should have a unique timer;
 
         // Defines the wave functions to use for the respective task
         private Func<float, float> _waveFunction;
@@ -26,8 +25,10 @@ namespace GameResources.Bullet
 
         private Transform _bulletBody;
 
-        public void SetWaveSpecs(ModulationType modType, Func<float, float> waveFunc, Func<float, float> modFunction = null)
+        public void SetSpawnedWaveBulletSpecs(int damage, float bulletSpeed, int spawnIndex, ModulationType modType, 
+            Func<float, float> waveFunc, Func<float, float> modFunction = null)
         {
+            SetSpawnedBulletSpecs(damage, bulletSpeed, spawnIndex);
             _currentModType = modType;
             _waveFunction = waveFunc;
             switch (modType)
@@ -51,7 +52,6 @@ namespace GameResources.Bullet
 
         public override void OnInit()
         {
-            _localTime = 0f;
             _currentModType = ModulationType.None;
             
             if (_bulletBody == null)
@@ -60,23 +60,23 @@ namespace GameResources.Bullet
 
         public override void OnUpdate()
         {
+            base.OnUpdate();
             BulletTrajectory();
         }
 
         private void BulletTrajectory()
         {
-            _localTime += Time.deltaTime;
             float lateralPos = 0f;
             switch (_currentModType)
             {
                 case ModulationType.None:
-                    lateralPos = _amplitudeFactor * _waveFunction(_frequencyFactor * _localTime);
+                    lateralPos = _amplitudeFactor * _waveFunction(_frequencyFactor * LocalTime);
                     break;
                 case ModulationType.AmplitudeMod:
-                    lateralPos = AmplitudeModulation(_localTime);
+                    lateralPos = AmplitudeModulation(LocalTime);
                     break;
                 case ModulationType.FrequencyMod:
-                    lateralPos = FrequencyModulation(_localTime);
+                    lateralPos = FrequencyModulation(LocalTime);
                     break;
             }
             

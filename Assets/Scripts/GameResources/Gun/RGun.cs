@@ -6,9 +6,8 @@ namespace GameResources.Gun
     public abstract class RGun : MonoBehaviour, IGun
     {
         public int bulletDamage = 1;
+        public float bulletTranslationSpeed = 10f;
         
-        public float bulletSpeed = 10f;
-        public GameObject primaryBullet;
         protected Transform _firePoint;
         
         public float PrimaryFireRate { get; private set; }
@@ -28,8 +27,8 @@ namespace GameResources.Gun
         protected virtual void FireBullet()
         {
             var projectile =
-                AppHandler.BulletManager.SpawnPrimaryBullet(_firePoint.position, _firePoint.rotation, bulletDamage);
-            projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
+                AppHandler.BulletManager.SpawnPrimaryBullet(_firePoint.position, _firePoint.rotation, bulletDamage, bulletTranslationSpeed);
+            // projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3841893480200500001}
   - component: {fileID: 5025746594283546280}
-  - component: {fileID: 4471202876812549601}
+  - component: {fileID: 4883882005334691318}
   m_Layer: 0
   m_Name: WaveBullet
   m_TagString: Untagged
@@ -50,7 +50,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &4471202876812549601
+--- !u!114 &4883882005334691318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,9 +59,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3841893480200499935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67bb4b4e334a491ab82d26db6bffa8a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 451ec2de6c23476292f1ad8a8fa40265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletLifetime: 2
 --- !u!1 &3841893480587434338
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7990442930887645793}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3

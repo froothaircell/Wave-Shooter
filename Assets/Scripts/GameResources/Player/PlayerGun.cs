@@ -3,7 +3,6 @@ using CoreResources.Utils;
 using GameResources.Bullet;
 using GameResources.Gun;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameResources.Player
 {
@@ -66,9 +65,9 @@ namespace GameResources.Player
             }
 
             var projectile = AppHandler.BulletManager.SpawnSecondaryBullet(_firePoint.position, _firePoint.rotation,
-                waveFunc, _modType, modFunc, bulletDamage);
+                waveFunc, _modType, modFunc, bulletDamage, bulletTranslationSpeed);
             // var projectile = Instantiate(specBullet, _firePoint.position, _firePoint.rotation);
-            projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
+            // projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
         }
     }
 }
