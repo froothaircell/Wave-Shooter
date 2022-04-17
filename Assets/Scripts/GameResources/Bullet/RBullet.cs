@@ -48,6 +48,7 @@ namespace GameResources.Bullet
 
         private void ReturnToPool()
         {
+            Debug.Log("Returning bullet to pool");
             AppHandler.BulletManager.ReturnToPool(gameObject);
         }
     }

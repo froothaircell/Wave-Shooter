@@ -9,9 +9,9 @@ namespace GameResources.Player
     // Change to non monobehavior after you have a pool manager
     public class PlayerGun : RGun
     {
-        private ModulationType _modType;
-        private WaveType _waveType;
-        private WaveType _modWaveType;
+        public ModulationType _modType;
+        public WaveType _waveType;
+        public WaveType _modWaveType;
         
         public override void OnInit()
         {
@@ -45,6 +45,9 @@ namespace GameResources.Player
                     break;
                 case WaveType.Saw:
                     waveFunc = WaveGenerator.Saw;
+                    break;
+                default:    // Change this later
+                    waveFunc = WaveGenerator.Sin;
                     break;
             }
 

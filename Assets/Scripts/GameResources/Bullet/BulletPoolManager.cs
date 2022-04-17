@@ -99,6 +99,7 @@ namespace GameResources.Bullet
             WB.SetSpawnedWaveBulletSpecs(damage, bulletTranslationSpeed, Index, modType, waveFunc, modFunc);
             WB.OnInit();
             _spawnedBullets[Index] = GO;
+            _availableIndices.Remove(Index);
             _spawnCount++;
             return GO;
         }
