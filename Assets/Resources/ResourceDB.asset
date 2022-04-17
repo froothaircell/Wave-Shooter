@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f812757cd34141871ea72c8e2645c2, type: 3}
+  m_Name: ResourceDB
+  m_EditorClassIdentifier: 
+  _prefabResourceItems:
+  - _name: Bullet
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: Player
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: WaveBullet
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  _otherResourceItems:
+  - _name: ResourceDB
+    _path: 
+    retrievedObject: {fileID: 0}

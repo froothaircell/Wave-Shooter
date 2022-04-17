@@ -123,6 +123,115 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &388406898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388406899}
+  - component: {fileID: 388406900}
+  m_Layer: 0
+  m_Name: AppHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388406899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388406898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.3075304, y: 79.03677, z: -7.066902}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388406900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388406898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a199d33fe48b4a52b0c78c2000fde6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1258160526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258160528}
+  - component: {fileID: 1258160527}
+  m_Layer: 0
+  m_Name: TempBulletHellManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1258160527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258160526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBullets: 1023
+  drawPriority: 0
+  bulletSettings: {fileID: 11400000, guid: d6f7aa6df132f8949a6196c029216d9c, type: 2}
+  spawnSettings: {fileID: 11400000, guid: 982362046ad998544960d94fd3e12fde, type: 2}
+  currentActiveBullets: 0
+  maxActiveBullets: 0
+  seed: 
+  randomiseSeedOnAwake: 1
+  previewMat: {fileID: 2100000, guid: 9513ce959bf787142bac240698465864, type: 2}
+  OnBulletDied:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeaponFired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1258160528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258160526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.3075304, y: 79.03677, z: -7.066902}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +523,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.1835e-41, y: 2.0387484e-38, z: 4.5697343e-37, w: 4.1326e-40}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -517,5 +626,13 @@ PrefabInstance:
       propertyPath: specBullet
       value: 
       objectReference: {fileID: 3841893480200499935, guid: 57f1e170119a97245bcbddfa1101e6f7, type: 3}
+    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
+      propertyPath: primaryBullet
+      value: 
+      objectReference: {fileID: 3841893480200499935, guid: e26fd35fd87574b4a8a6da2a98ec3035, type: 3}
+    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
+      propertyPath: BulletHellManager
+      value: 
+      objectReference: {fileID: 1258160527}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}

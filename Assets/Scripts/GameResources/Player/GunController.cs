@@ -1,4 +1,5 @@
 using System;
+using GameResources.Gun;
 using UnityEngine;
 
 namespace GameResources.Player

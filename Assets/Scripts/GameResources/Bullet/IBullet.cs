@@ -2,6 +2,10 @@
 {
     public interface IBullet
     {
-        public virtual void BulletTrajectory(){}
+        int Damage { get; }
+        
+        void OnInit();
+        void OnUpdate();
+        void OnDeInit();
     }
 }
