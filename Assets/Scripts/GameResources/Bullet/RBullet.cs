@@ -25,7 +25,6 @@ namespace GameResources.Bullet
         {
             var currRT = Time.realtimeSinceStartup;
             var currTimeDif = currRT - RealTime;
-            Debug.LogWarning($"The current time difference is {currTimeDif}");
             RealTime = currRT;
             LocalTime += currTimeDif;
             if (LocalTime >= BulletLifetime)

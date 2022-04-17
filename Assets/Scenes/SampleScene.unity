@@ -636,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 1258160527}
     - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
       propertyPath: bulletTranslationSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}

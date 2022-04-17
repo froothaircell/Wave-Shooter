@@ -41,6 +41,10 @@ namespace GameResources.Player
             var currMousePos = Input.mousePosition;
             currMousePos.z = 30 - 4; // Change this later it's wonky
             _mousePos = cam.ScreenToWorldPoint(currMousePos);
+            
+            Vector2 lookDir = _mousePos - rb.position;
+            rb.MoveRotation(Quaternion.LookRotation(lookDir, -Vector3.forward));
+            // transform.rotation = Quaternion.LookRotation(lookDir, -Vector3.forward);
         }
 
         private void FixedUpdate()
@@ -51,14 +55,10 @@ namespace GameResources.Player
                 // transform.position += _movement * (moveSpeed * Time.deltaTime);
                 // rb.AddForce(_movement * moveSpeed, ForceMode.VelocityChange);
             }
-            Vector2 lookDir = _mousePos - rb.position;
-            
-            transform.rotation = Quaternion.LookRotation(lookDir, -Vector3.forward);
         }
 
         private IEnumerator DodgeSequence(Vector3 movement)
         {
-            Debug.Log("Started a dodge coroutine");
             var firstPos = rb.position;
             movement *= dodgeSpeed;
             movement.z = 0;
@@ -67,7 +67,6 @@ namespace GameResources.Player
                 rb.MovePosition(rb.position + movement * Time.deltaTime);
                 yield return new WaitForFixedUpdate();
             }
-            Debug.Log($"The dodge distance is {Vector3.Distance(transform.position, firstPos)}");
             _willDodge = false;
         }
         
