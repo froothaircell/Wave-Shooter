@@ -618,29 +618,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 3841893480200499935, guid: e26fd35fd87574b4a8a6da2a98ec3035, type: 3}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: _waveType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: specBullet
-      value: 
-      objectReference: {fileID: 3841893480200499935, guid: 57f1e170119a97245bcbddfa1101e6f7, type: 3}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: primaryBullet
-      value: 
-      objectReference: {fileID: 3841893480200499935, guid: e26fd35fd87574b4a8a6da2a98ec3035, type: 3}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: BulletHellManager
-      value: 
-      objectReference: {fileID: 1258160527}
-    - target: {fileID: 8929866499247847141, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}
-      propertyPath: bulletTranslationSpeed
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ff3ed5a869825458f9c57677c8a0fd, type: 3}

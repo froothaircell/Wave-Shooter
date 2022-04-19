@@ -1,10 +1,9 @@
 ﻿namespace GameResources.Gun
 {
-    public interface IGun
+    public interface IPlayerComponent
     {
-        float PrimaryFireRate { get; }
-
         void OnInit();
+        void OnUpdate();
         void OnDeInit();
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameResources.Gun
 {
-    public abstract class RGun : MonoBehaviour, IGun
+    public abstract class RGun : MonoBehaviour, IPlayerComponent
     {
         public int bulletDamage = 1;
         public float bulletTranslationSpeed = 10f;
@@ -17,6 +17,11 @@ namespace GameResources.Gun
             _firePoint = transform.GetChild(0);
             GunController controller = GetComponentInParent<GunController>();
             controller.OnFire += FireBullet;
+        }
+
+        public virtual void OnUpdate()
+        {
+            
         }
 
         public virtual void OnDeInit()

@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace GameResources.Player
 {
-    public class GunController : MonoBehaviour
+    public class GunController : MonoBehaviour, IPlayerComponent
     {
         public Action OnFire;
         public Action OnFireSpec;
 
-        private void Start()
+        public void OnInit()
         {
-            GetComponentInChildren<IGun>().OnInit();
+            
         }
-        
-        private void Update()
+
+        public void OnUpdate()
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -27,7 +27,7 @@ namespace GameResources.Player
             }
         }
 
-        private void OnDisable()
+        public void OnDeInit()
         {
             OnFire = null;
             OnFireSpec = null;

@@ -74,6 +74,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8929866498982416075}
   - component: {fileID: 8929866498982416074}
+  - component: {fileID: 7530451333193344869}
+  - component: {fileID: 491358875869341970}
   - component: {fileID: 8929866498982416084}
   - component: {fileID: 3398374240724370753}
   m_Layer: 0
@@ -115,6 +117,32 @@ MonoBehaviour:
   dodgeDistance: 10
   dodgeSpeed: 105.3
   rb: {fileID: 3398374240724370753}
+--- !u!114 &7530451333193344869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929866498982416073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5b9b6535154879b927d606c496975c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &491358875869341970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929866498982416073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42431c9c50ae46028da50a1694592274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  MaxShield: 100
 --- !u!114 &8929866498982416084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,9 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fdf520cd478d04ba1bf42b870c5cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  bullet: {fileID: 0}
-  specBullet: {fileID: 0}
+  bulletDamage: 1
+  bulletTranslationSpeed: 15
+  _modType: 0
+  _waveType: 0
+  _modWaveType: 0
 --- !u!1 &8929866499358595065
 GameObject:
   m_ObjectHideFlags: 0
