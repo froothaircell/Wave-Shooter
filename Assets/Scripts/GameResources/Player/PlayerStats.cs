@@ -52,7 +52,6 @@ namespace GameResources.Player
 
         protected override void OnDeath()
         {
-            Debug.Log($"Player Died!");
             REvent_PlayerDeath.Dispatch(transform);
         }
     }

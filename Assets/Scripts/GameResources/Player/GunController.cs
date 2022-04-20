@@ -7,31 +7,29 @@ namespace GameResources.Player
 {
     public class GunController : MonoBehaviour, ICharacterComponent
     {
-        public Action OnFire;
-        public Action OnFireSpec;
+        private PlayerGun _playerGun;
 
         public void OnInit()
         {
-            
+            _playerGun = GetComponentInChildren<PlayerGun>();
         }
 
         public void OnUpdate()
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                OnFire.Invoke();
+                _playerGun.FireBullet();
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
-                OnFireSpec.Invoke();
+                _playerGun.FireSpecialBullet();
             }
         }
 
         public void OnDeInit()
         {
-            OnFire = null;
-            OnFireSpec = null;
+            _playerGun = null;
         }
     }
 }

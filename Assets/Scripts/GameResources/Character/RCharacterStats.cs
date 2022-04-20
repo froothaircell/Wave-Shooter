@@ -1,4 +1,5 @@
-﻿using GameResources.Gun;
+﻿using System;
+using GameResources.Gun;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,6 +29,8 @@ namespace GameResources.Character
                 OnDeath();
             }
         }
+
+        // protected abstract void OnCollisionEnter(Collision collision);
 
         protected abstract void OnDeath();
     }

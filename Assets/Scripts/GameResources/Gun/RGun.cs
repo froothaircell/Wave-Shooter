@@ -16,8 +16,6 @@ namespace GameResources.Gun
         public virtual void OnInit()
         {
             _firePoint = transform.GetChild(0);
-            GunController controller = GetComponentInParent<GunController>();
-            controller.OnFire += FireBullet;
         }
 
         public virtual void OnUpdate()
@@ -30,11 +28,10 @@ namespace GameResources.Gun
             
         }
 
-        protected virtual void FireBullet()
+        public virtual void FireBullet()
         {
             var projectile =
                 AppHandler.BulletManager.SpawnPrimaryBullet(_firePoint.position, _firePoint.rotation, bulletDamage, bulletTranslationSpeed);
-            // projectile.GetComponent<Rigidbody>().AddForce(_firePoint.up * bulletSpeed, ForceMode.VelocityChange);
         }
     }
 }

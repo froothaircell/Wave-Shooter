@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
-using BulletFury;
 using CoreResources.Utils.Singletons;
 using GameResources.Enemy;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace GameResources.Character
@@ -91,7 +89,7 @@ namespace GameResources.Character
             }
             
             PlayerShip.SetActive(true);
-            PlayerShip.GetComponent<RCharacterController>().OnSpawn();
+            PlayerShip.GetComponent<IPooledCharacter>().OnSpawn();
             return PlayerShip;
         }
 
@@ -113,7 +111,7 @@ namespace GameResources.Character
             }
 
             Boss.SetActive(true);
-            Boss.GetComponent<RCharacterController>().OnSpawn();
+            Boss.GetComponent<IPooledCharacter>().OnSpawn();
             return Boss;
         }
 
@@ -129,6 +127,7 @@ namespace GameResources.Character
             _spawnedMooks[Index] = GO;
             _mookSpawnCount++;
             GO.SetActive(true);
+            GO.GetComponent<IPooledCharacter>().OnSpawn();
             return GO;
         }
 
@@ -167,6 +166,39 @@ namespace GameResources.Character
             }
             
             charController.OnDespawn();
+        }
+
+        private void Update()
+        {
+            if (_mookSpawnCount > 0 && _mookUpdateCoroutine == null)
+            {
+                _mookUpdateCoroutine = StartCoroutine(MookUpdateCoroutine());
+            }
+            else if (_mookSpawnCount <= 0 && _mookUpdateCoroutine == null)
+            {
+                StopCoroutine(_mookUpdateCoroutine);
+                _mookUpdateCoroutine = null;
+            }
+        }
+
+        private IEnumerator MookUpdateCoroutine()
+        {
+            int i = 0;
+            while (true)
+            {
+                yield return null;
+                if (i >= MaxSpawnedMooks)
+                {
+                    i = 0;
+                }
+                if (_availableIndices.ContainsKey(i))
+                {
+                    i++;
+                    continue;
+                }
+                _spawnedMooks[i].GetComponent<IPooledCharacter>().OnSpawnedUpdate();
+                i++;
+            }
         }
     }
 }

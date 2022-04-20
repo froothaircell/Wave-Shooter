@@ -19,9 +19,6 @@ namespace GameResources.Player
             _waveType = WaveType.None;
             _modWaveType = WaveType.None;
             _firePoint = transform.GetChild(0);
-            GunController controller = GetComponentInParent<GunController>();
-            controller.OnFire += FireBullet;
-            controller.OnFireSpec += FireSpecialBullet;
         }
 
         public override void OnDeInit()
@@ -29,7 +26,7 @@ namespace GameResources.Player
             
         }
 
-        private void FireSpecialBullet()
+        public void FireSpecialBullet()
         {
             Func<float, float> waveFunc = null, modFunc = null;
             switch (_waveType)

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using BulletFury;
+using BulletFury.Data;
 using CoreResources.Utils.Singletons;
 using UnityEngine;
 
@@ -21,6 +23,8 @@ namespace GameResources.Bullet
         private int _spawnCount = 0;
         private Coroutine _bulletUpdates;
 
+        // Reference to enemy bullet managers
+        private BulletManager MookBulletManager;
 
         protected override void InitSingleton()
         {
@@ -31,8 +35,18 @@ namespace GameResources.Bullet
             _availableIndices = new Dictionary<int, int>();
             _spawnCount = 0;
 
+            // Setting up Enemy bullet managers
+            LoadEnemyBulletManagers();
+            
             LoadBulletPools();
             InstantiateBulletPools();
+        }
+
+        private void LoadEnemyBulletManagers()
+        {
+            var GO = AppHandler.AssetManager.LoadAsset<GameObject>("MookBulletHellManager");
+            GO = Instantiate(GO, transform.position, transform.rotation, transform);
+            MookBulletManager = GO.GetComponent<BulletManager>();
         }
 
         private void LoadBulletPools()
@@ -58,6 +72,11 @@ namespace GameResources.Bullet
             {
                 _availableIndices.Add(i, i);
             }
+        }
+
+        public void SpawnEnemyBullet(Vector3 position, Vector3 forward)
+        {
+            MookBulletManager.Spawn(position, forward);
         }
 
         public GameObject SpawnPrimaryBullet(Vector3 position, Quaternion rotation, int damage = 1, 

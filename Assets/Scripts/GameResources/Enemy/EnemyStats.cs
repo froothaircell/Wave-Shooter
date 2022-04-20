@@ -5,8 +5,6 @@ namespace GameResources.Enemy
 {
     public class EnemyStats: RCharacterStats
     {
-        public int maxHealth = 20;
-        
         public override void OnInit()
         {
             SetStats();
