@@ -5,6 +5,7 @@ using CoreResources.Utils.Singletons;
 using GameResources.Bullet;
 using GameResources.Character;
 using UnityEditor;
+using UnityEngine;
 
 namespace GameResources
 {
@@ -32,6 +33,9 @@ namespace GameResources
             AssetManager = AssetLoader.SetInstanceType<AssetLoader>();
             CharacterManager = CharacterPoolManager.Instance;
             BulletManager = BulletPoolManager.Instance;
+            
+            CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
+            CharacterManager.SpawnMook(new Vector3(10, 10, -4), Quaternion.identity);
         }
     }
 }

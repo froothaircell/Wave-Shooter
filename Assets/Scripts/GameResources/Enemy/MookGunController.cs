@@ -9,10 +9,12 @@ namespace GameResources.Enemy
         private MookGun _mookGun;
         private Coroutine _shootingCoroutine;
         private Transform _playerShip;
+        private float _fireRate = 0.5f;
         
         public void OnInit()
         {
             _mookGun = GetComponentInChildren<MookGun>();
+            _mookGun.InitGun();
             _playerShip = AppHandler.CharacterManager.PlayerShip.transform;
             _shootingCoroutine = StartCoroutine(ShootingCoroutine());
         }
@@ -36,8 +38,16 @@ namespace GameResources.Enemy
         {
             while (true)
             {
+                if (!_playerShip.gameObject.activeSelf)
+                {
+                    OnDeInit();
+                    yield break;
+                }
+                    
                 Vector3 lookDir = (_playerShip.position - transform.position).normalized;
                 transform.rotation = Quaternion.LookRotation(lookDir, -Vector3.forward);
+                _mookGun.FireBullet();
+                yield return new WaitForSeconds(_fireRate);
             }
         }
     }

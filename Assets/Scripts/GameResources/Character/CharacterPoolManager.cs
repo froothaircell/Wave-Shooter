@@ -16,7 +16,7 @@ namespace GameResources.Character
         public GameObject Boss { get; private set; }
         private GameObject Mook1;
         private bool _playerShipSpawned => PlayerShip.activeSelf; // Change these later
-        private bool _bossSpawned => PlayerShip.activeSelf;
+        private bool _bossSpawned => Boss.activeSelf;
         private const int MaxSpawnedMooks = 10;
         private Stack<GameObject> _mookPool;
         private GameObject[] _spawnedMooks;
@@ -43,9 +43,6 @@ namespace GameResources.Character
 
             LoadCharacterPools();
             InstantiateCharacterPools();
-
-            SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
-            SpawnMook(new Vector3(10, 10, -4), Quaternion.identity);
         }
 
         private void LoadCharacterPools()
@@ -127,7 +124,7 @@ namespace GameResources.Character
             _spawnedMooks[Index] = GO;
             _mookSpawnCount++;
             GO.SetActive(true);
-            GO.GetComponent<IPooledCharacter>().OnSpawn();
+            GO.GetComponent<IPooledCharacter>().OnSpawn(); // Causing problems
             return GO;
         }
 

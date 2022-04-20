@@ -19,7 +19,7 @@ MonoBehaviour:
   directionArc: 0
   randomise: 0
   onEdge: 0
-  numSides: 5
+  numSides: 1
   numPerSide: 1
   radius: 1
   arc: 4

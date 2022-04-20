@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameResources.Gun
 {
-    public abstract class RGun : MonoBehaviour, ICharacterComponent
+    public abstract class RGun : MonoBehaviour
     {
         public int bulletDamage = 1;
         public float bulletTranslationSpeed = 10f;
@@ -13,19 +13,9 @@ namespace GameResources.Gun
         
         public float PrimaryFireRate { get; private set; }
         
-        public virtual void OnInit()
+        public virtual void InitGun()
         {
             _firePoint = transform.GetChild(0);
-        }
-
-        public virtual void OnUpdate()
-        {
-            
-        }
-
-        public virtual void OnDeInit()
-        {
-            
         }
 
         public virtual void FireBullet()

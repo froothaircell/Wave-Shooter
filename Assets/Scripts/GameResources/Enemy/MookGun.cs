@@ -4,7 +4,7 @@ namespace GameResources.Enemy
 {
     public class MookGun : RGun
     {
-        public override void OnInit()
+        public override void InitGun()
         {
             _firePoint = transform;
         }

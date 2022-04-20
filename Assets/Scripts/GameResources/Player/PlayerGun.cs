@@ -13,17 +13,12 @@ namespace GameResources.Player
         public WaveType _waveType;
         public WaveType _modWaveType;
         
-        public override void OnInit()
+        public override void InitGun()
         {
             _modType = ModulationType.None;
             _waveType = WaveType.None;
             _modWaveType = WaveType.None;
             _firePoint = transform.GetChild(0);
-        }
-
-        public override void OnDeInit()
-        {
-            
         }
 
         public void FireSpecialBullet()

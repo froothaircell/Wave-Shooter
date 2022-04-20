@@ -12,6 +12,7 @@ namespace GameResources.Player
         public void OnInit()
         {
             _playerGun = GetComponentInChildren<PlayerGun>();
+            _playerGun.InitGun();
         }
 
         public void OnUpdate()
