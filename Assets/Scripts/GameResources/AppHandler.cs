@@ -3,6 +3,7 @@ using CoreResources.Pool;
 using CoreResources.Utils.ResourceLoader;
 using CoreResources.Utils.Singletons;
 using GameResources.Bullet;
+using GameResources.Character;
 using UnityEditor;
 
 namespace GameResources
@@ -11,7 +12,8 @@ namespace GameResources
     {
         public static TypePool EventPool = new("EventPool");
         public static REventHandler EventManager;
-        public static AssetLoader AssetHandler;
+        public static AssetLoader AssetManager;
+        public static CharacterPoolManager CharacterManager;
         public static BulletPoolManager BulletManager;
 
         protected override void Awake()
@@ -27,7 +29,8 @@ namespace GameResources
         {
             // Make the core services available before starting the game related stuff
             EventManager = REventHandler.SetInstanceType<REventHandler>();
-            AssetHandler = AssetLoader.SetInstanceType<AssetLoader>();
+            AssetManager = AssetLoader.SetInstanceType<AssetLoader>();
+            CharacterManager = CharacterPoolManager.Instance;
             BulletManager = BulletPoolManager.Instance;
         }
     }

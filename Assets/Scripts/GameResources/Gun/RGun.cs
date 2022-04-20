@@ -1,9 +1,10 @@
-﻿using GameResources.Player;
+﻿using GameResources.Character;
+using GameResources.Player;
 using UnityEngine;
 
 namespace GameResources.Gun
 {
-    public abstract class RGun : MonoBehaviour, IPlayerComponent
+    public abstract class RGun : MonoBehaviour, ICharacterComponent
     {
         public int bulletDamage = 1;
         public float bulletTranslationSpeed = 10f;

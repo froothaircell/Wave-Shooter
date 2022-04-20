@@ -50,17 +50,17 @@ namespace GameResources.Bullet
             _freqModulator = null;
         }
 
-        public override void OnInit()
+        public override void OnSpawn()
         {
-            base.OnInit();
+            base.OnSpawn();
             
             if (_bulletBody == null)
                 _bulletBody = transform.GetChild(0);
         }
 
-        public override void OnUpdate()
+        public override void OnSpawnedUpdate()
         {
-            base.OnUpdate();
+            base.OnSpawnedUpdate();
             BulletTrajectory();
         }
 

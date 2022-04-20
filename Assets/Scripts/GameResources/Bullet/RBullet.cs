@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameResources.Bullet
 {
-    public abstract class RBullet : MonoBehaviour, IBullet
+    public abstract class RBullet : MonoBehaviour, IPooledBullet
     {
         public int Damage { get; private set; }
         public float BulletLifetime = 1f; // Despawn the bullet after this amount of time
@@ -14,14 +14,14 @@ namespace GameResources.Bullet
         protected float LocalTime = 0f; // Every bullet should have a unique timer;
         protected float RealTime;
 
-        public virtual void OnInit()
+        public virtual void OnSpawn()
         {
             LocalTime = 0f;
             RealTime = Time.realtimeSinceStartup;
             rb = GetComponent<Rigidbody>();
         }
 
-        public virtual void OnUpdate()
+        public virtual void OnSpawnedUpdate()
         {
             var currRT = Time.realtimeSinceStartup;
             var currTimeDif = currRT - RealTime;
@@ -34,7 +34,7 @@ namespace GameResources.Bullet
             rb.MovePosition(rb.position + transform.up * BulletSpeed * currTimeDif);
         }
 
-        public virtual void OnDeInit()
+        public virtual void OnDespawn()
         {
             SpawnInd = -1;
         }
@@ -48,7 +48,6 @@ namespace GameResources.Bullet
 
         private void ReturnToPool()
         {
-            Debug.Log("Returning bullet to pool");
             AppHandler.BulletManager.ReturnToPool(gameObject);
         }
     }

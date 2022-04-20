@@ -1,6 +1,6 @@
-﻿namespace GameResources.Gun
+﻿namespace GameResources.Character
 {
-    public interface IPlayerComponent
+    public interface ICharacterComponent
     {
         void OnInit();
         void OnUpdate();

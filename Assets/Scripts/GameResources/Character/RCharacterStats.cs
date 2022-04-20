@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace GameResources.Character
 {
-    public abstract class RCharacterStats : MonoBehaviour, ICharacterStats,IPlayerComponent
+    public abstract class RCharacterStats : MonoBehaviour, ICharacterStats, ICharacterComponent
     {
         public int maxHealth = 200;
         private int _health;

@@ -1,5 +1,4 @@
-﻿using System;
-using GameResources.Character;
+﻿using GameResources.Character;
 using GameResources.Events;
 using UnityEngine;
 
@@ -18,10 +17,7 @@ namespace GameResources.Player
 
         public override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                TakeDamage(10);
-            }
+            
         }
 
         public override void OnDeInit()

@@ -1,10 +1,11 @@
 using System;
+using GameResources.Character;
 using GameResources.Gun;
 using UnityEngine;
 
 namespace GameResources.Player
 {
-    public class GunController : MonoBehaviour, IPlayerComponent
+    public class GunController : MonoBehaviour, ICharacterComponent
     {
         public Action OnFire;
         public Action OnFireSpec;

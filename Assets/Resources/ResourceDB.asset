@@ -16,6 +16,12 @@ MonoBehaviour:
   - _name: BasicBullet
     _path: Prefabs
     retrievedObject: {fileID: 0}
+  - _name: Boss1
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: Mook1
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
   - _name: Player
     _path: Prefabs
     retrievedObject: {fileID: 0}

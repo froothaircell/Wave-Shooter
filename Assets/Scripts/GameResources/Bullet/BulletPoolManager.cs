@@ -37,8 +37,8 @@ namespace GameResources.Bullet
 
         private void LoadBulletPools()
         {
-            _primaryBullet = AppHandler.AssetHandler.LoadAsset<GameObject>("BasicBullet");
-            _secondaryBullet = AppHandler.AssetHandler.LoadAsset<GameObject>("WaveBullet");
+            _primaryBullet = AppHandler.AssetManager.LoadAsset<GameObject>("BasicBullet");
+            _secondaryBullet = AppHandler.AssetManager.LoadAsset<GameObject>("WaveBullet");
         }
 
         private void InstantiateBulletPools()
@@ -75,7 +75,7 @@ namespace GameResources.Bullet
             BasicBullet BB = GO.GetComponent<BasicBullet>();
             var Index = _availableIndices.First().Value;
             BB.SetSpawnedBulletSpecs(damage, bulletTranslationSpeed, Index);
-            BB.OnInit();
+            BB.OnSpawn();
             _spawnedBullets[Index] = GO;
             _availableIndices.Remove(Index);
             _spawnCount++;
@@ -91,16 +91,16 @@ namespace GameResources.Bullet
             {
                 throw new ObjectNotFoundException($"Secondary Bullet Pool is empty!");
             }
-            GO.SetActive(true);
             GO.transform.position = position;
             GO.transform.rotation = rotation;
             WaveBullet WB = GO.GetComponent<WaveBullet>();
             var Index = _availableIndices.First().Value;
             WB.SetSpawnedWaveBulletSpecs(damage, bulletTranslationSpeed, Index, modType, waveFunc, modFunc);
-            WB.OnInit();
+            WB.OnSpawn();
             _spawnedBullets[Index] = GO;
             _availableIndices.Remove(Index);
             _spawnCount++;
+            GO.SetActive(true);
             return GO;
         }
 
@@ -110,6 +110,10 @@ namespace GameResources.Bullet
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
             var spwnIndex = bullet.GetComponent<RBullet>().SpawnInd;
+            if (spwnIndex < 0)
+            {
+                throw new ArgumentException($"Bullet is not spawned");
+            }
             if (spwnIndex > 0 && _spawnedBullets[spwnIndex] == null)
             {
                 throw new ArgumentOutOfRangeException($"Bullet does not exist in the spawned list");
@@ -128,7 +132,7 @@ namespace GameResources.Bullet
             {
                 _primaryBulletPool.Push(bullet);
             }
-            bullet.GetComponent<IBullet>().OnDeInit();
+            bullet.GetComponent<IPooledBullet>().OnDespawn();
         }
         
         private void Update()
@@ -166,7 +170,7 @@ namespace GameResources.Bullet
                     j = 0;
                     yield return new WaitForFixedUpdate();
                 }
-                _spawnedBullets[i]?.GetComponent<IBullet>().OnUpdate();
+                _spawnedBullets[i]?.GetComponent<IPooledBullet>().OnSpawnedUpdate();
                 i++;
                 j++;
             }

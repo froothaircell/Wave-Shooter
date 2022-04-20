@@ -5,12 +5,12 @@ namespace GameResources.Events
 {
     public class REvent_PlayerDeath : REvent
     {
-        public Transform LastPosition;
+        public Transform ShipTransform;
 
         public static void Dispatch(Transform shipTransform)
         {
             var evt = Get<REvent_PlayerDeath>();
-            evt.LastPosition = shipTransform;
+            evt.ShipTransform = shipTransform;
             AppHandler.EventManager.Dispatch(evt);
         }
     }

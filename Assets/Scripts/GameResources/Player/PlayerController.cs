@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
+using CoreResources.Handlers.EventHandler;
+using GameResources.Character;
+using GameResources.Events;
 using GameResources.Gun;
 using UnityEngine;
 
 namespace GameResources.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : RCharacterController
     {
-        private IPlayerComponent[] _components;
-        
-        private void Awake()
+        public override void OnSpawn()
         {
-            _components = GetComponentsInChildren<IPlayerComponent>();
-            foreach (var component in _components)
-            {
-                component.OnInit();
-            }
+            base.OnSpawn();
+            charType = CharacterType.PlayerShip;
+
+            AppHandler.EventManager.Subscribe<REvent_PlayerDeath>(OnCharacterDeath, _disposables);
         }
 
         private void Update()
@@ -25,12 +26,14 @@ namespace GameResources.Player
             }
         }
 
-        private void OnDisable()
+        public override void OnSpawnedUpdate()
         {
-            foreach (var component in _components)
-            {
-                component.OnDeInit();
-            }
+            // Keeping this empty for now but if performance of the PoolManager suffices we'll put the update stuff here
+        }
+
+        public override void OnCharacterDeath(REvent evt)
+        {
+            AppHandler.CharacterManager.ReturnToPool(gameObject);
         }
     }
 }
