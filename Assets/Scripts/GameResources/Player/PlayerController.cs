@@ -1,10 +1,6 @@
-﻿using System;
-using System.Runtime.Remoting.Messaging;
-using CoreResources.Handlers.EventHandler;
+﻿using CoreResources.Handlers.EventHandler;
 using GameResources.Character;
 using GameResources.Events;
-using GameResources.Gun;
-using UnityEngine;
 
 namespace GameResources.Player
 {

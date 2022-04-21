@@ -30,11 +30,11 @@ namespace GameResources.Enemy
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Got into ontriggerenter");
             if (other.CompareTag("PlayerBullet"))
             {
-                Debug.Log("Taking damage");
-                TakeDamage(other.GetComponentInParent<RBullet>().Damage);
+                var BulletCon = other.GetComponentInParent<RBullet>();
+                TakeDamage(BulletCon.Damage);
+                BulletCon.ReturnToPool();
             }
         }
     }

@@ -46,7 +46,7 @@ namespace GameResources.Bullet
             SpawnInd = spawnInd;
         }
 
-        private void ReturnToPool()
+        public void ReturnToPool()
         {
             AppHandler.BulletManager.ReturnToPool(gameObject);
         }
