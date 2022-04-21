@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using BulletFury;
-using BulletFury.Data;
 using CoreResources.Utils.Singletons;
 using UnityEngine;
 
@@ -22,6 +21,8 @@ namespace GameResources.Bullet
         private Dictionary<int, int> _availableIndices;
         private int _spawnCount = 0;
         private Coroutine _bulletUpdates;
+        private int _mookLevel = 3;
+        private int MookBulletDamage => _mookLevel; // Add nuance to the equation later
 
         // Reference to enemy bullet managers
         private BulletManager MookBulletManager;
@@ -47,6 +48,7 @@ namespace GameResources.Bullet
             var GO = AppHandler.AssetManager.LoadAsset<GameObject>("MookBulletHellManager");
             GO = Instantiate(GO, transform.position, transform.rotation, transform);
             MookBulletManager = GO.GetComponent<BulletManager>();
+            MookBulletManager.GetBulletSettings().SetDamage(MookBulletDamage);
         }
 
         private void LoadBulletPools()

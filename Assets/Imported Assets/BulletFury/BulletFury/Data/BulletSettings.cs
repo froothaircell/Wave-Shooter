@@ -150,6 +150,15 @@ namespace BulletFury.Data
         {
             _trackedObjects = new Dictionary<int, Transform>();
         }
+
+        /// <summary>
+        /// A custom function to set the damage
+        /// </summary>>
+        /// <param name="bulletDmg">the damage to be set</param>
+        public void SetDamage(int bulletDmg)
+        {
+            damage = bulletDmg;
+        }
         
         /// <summary>
         /// Initialise the bullet

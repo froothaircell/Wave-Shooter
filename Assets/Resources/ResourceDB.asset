@@ -28,6 +28,12 @@ MonoBehaviour:
   - _name: Player
     _path: Prefabs
     retrievedObject: {fileID: 0}
+  - _name: SamplePlayer
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: Stage
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
   - _name: WaveBullet
     _path: Prefabs
     retrievedObject: {fileID: 0}

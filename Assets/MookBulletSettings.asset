@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82dffc9fcebd41c894fc9c65a04b4cda, type: 3}
-  m_Name: New Bullet Settings
+  m_Name: MookBulletSettings
   m_EditorClassIdentifier: 
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: 7bdb6c229df8d9f49a5b28014c8aacaa, type: 2}
@@ -24,7 +24,7 @@ MonoBehaviour:
   size: 1
   colliderSize: 1
   angularVelocity: 0
-  startColor: {r: 1, g: 0, b: 0, a: 1}
+  startColor: {r: 1.8352941, g: 0.21960784, b: 0.21960784, a: 1}
   useColorOverTime: 0
   colorCurveUsage: 0
   colorCurveTime: 0
