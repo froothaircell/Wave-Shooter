@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using CoreResources.Utils.Singletons;
 using GameResources.Enemy;
+using GameResources.Events;
 using UnityEngine;
 
 namespace GameResources.Character
@@ -87,6 +88,7 @@ namespace GameResources.Character
             
             PlayerShip.SetActive(true);
             PlayerShip.GetComponent<IPooledCharacter>().OnSpawn();
+            REvent_PlayerSpawned.Dispatch(PlayerShip.transform);
             return PlayerShip;
         }
 
@@ -171,7 +173,7 @@ namespace GameResources.Character
             {
                 _mookUpdateCoroutine = StartCoroutine(MookUpdateCoroutine());
             }
-            else if (_mookSpawnCount <= 0 && _mookUpdateCoroutine == null)
+            else if (_mookSpawnCount <= 0 && _mookUpdateCoroutine != null)
             {
                 StopCoroutine(_mookUpdateCoroutine);
                 _mookUpdateCoroutine = null;
@@ -193,7 +195,8 @@ namespace GameResources.Character
                     i++;
                     continue;
                 }
-                _spawnedMooks[i].GetComponent<IPooledCharacter>().OnSpawnedUpdate();
+                // Added the bash operator in case the mook is returned to pool during the coroutine (race condition)
+                _spawnedMooks[i]?.GetComponent<IPooledCharacter>().OnSpawnedUpdate(); 
                 i++;
             }
         }

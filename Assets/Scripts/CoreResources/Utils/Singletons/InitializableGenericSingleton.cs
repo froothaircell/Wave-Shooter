@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using CoreResources.Handlers.EventHandler;
 using CoreResources.Utils.Disposables;
+using GameResources;
+using GameResources.Events;
+
 // using GameResources;
 // using GameResources.Events;
 
@@ -62,7 +65,7 @@ namespace CoreResources.Utils.Singletons
         protected override void InitSingleton()
         {
             _disposables = new List<IDisposable>();
-            // AppHandler.EventManager.Subscribe<REvent_GameQuit>(OnCleanSingleton, _disposables);
+            AppHandler.EventManager.Subscribe<REvent_GameQuit>(OnCleanSingleton, _disposables);
         }
 
         protected override void CleanSingleton()

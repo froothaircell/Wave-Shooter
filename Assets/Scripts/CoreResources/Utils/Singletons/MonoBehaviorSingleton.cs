@@ -1,4 +1,7 @@
-﻿using CoreResources.Handlers.EventHandler;
+﻿using System;
+using System.Collections.Generic;
+using CoreResources.Handlers.EventHandler;
+using CoreResources.Utils.Disposables;
 using UnityEngine;
 
 namespace CoreResources.Utils.Singletons
@@ -6,6 +9,7 @@ namespace CoreResources.Utils.Singletons
     public abstract class MonoBehaviorSingleton<T> : MonoBehaviour where T : MonoBehaviorSingleton<T>
     {
         private static T _instance;
+        protected List<IDisposable> _disposables;
 
         public static T Instance
         {
@@ -28,6 +32,8 @@ namespace CoreResources.Utils.Singletons
 
         protected virtual void InitSingleton()
         {
+            _disposables = new List<IDisposable>();
+            
             if (Instance != null && GetInstanceID() != Instance.GetInstanceID())
             {
                 Destroy(gameObject);
@@ -38,10 +44,23 @@ namespace CoreResources.Utils.Singletons
                 DontDestroyOnLoad(gameObject);
             }
         }
+        
+        protected virtual void CleanSingleton()
+        {
+            if (_disposables != null)
+            {
+                _disposables.ClearDisposables();
+            }
+        }
 
         protected virtual void Awake()
         {
             InitSingleton();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            CleanSingleton();
         }
 
         protected virtual void OnReset(REvent evt)

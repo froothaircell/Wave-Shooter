@@ -1,5 +1,8 @@
-﻿using GameResources.Character;
+﻿using System;
+using GameResources.Bullet;
+using GameResources.Character;
 using GameResources.Events;
+using UnityEngine;
 
 namespace GameResources.Enemy
 {
@@ -23,6 +26,16 @@ namespace GameResources.Enemy
         protected override void OnDeath()
         {
             REvent_MookDeath.Dispatch(transform);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("Got into ontriggerenter");
+            if (other.CompareTag("PlayerBullet"))
+            {
+                Debug.Log("Taking damage");
+                TakeDamage(other.GetComponentInParent<RBullet>().Damage);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using CoreResources.Pool;
 using CoreResources.Utils.ResourceLoader;
 using CoreResources.Utils.Singletons;
 using GameResources.Bullet;
+using GameResources.CameraControls;
 using GameResources.Character;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace GameResources
         public static AssetLoader AssetManager;
         public static CharacterPoolManager CharacterManager;
         public static BulletPoolManager BulletManager;
+        public static CustomCameraManager CameraManager;
 
         protected override void Awake()
         {
@@ -25,6 +27,7 @@ namespace GameResources
                 Initialize();
             }
         }
+        
 
         private void Initialize()
         {
@@ -33,6 +36,7 @@ namespace GameResources
             AssetManager = AssetLoader.SetInstanceType<AssetLoader>();
             CharacterManager = CharacterPoolManager.Instance;
             BulletManager = BulletPoolManager.Instance;
+            CameraManager = CustomCameraManager.Instance;
             
             CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
             CharacterManager.SpawnMook(new Vector3(10, 10, -4), Quaternion.identity);
