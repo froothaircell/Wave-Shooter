@@ -64,6 +64,12 @@ namespace GameResources.Bullet
             BulletTrajectory();
         }
 
+        public override void OnDespawn()
+        {
+            base.OnDespawn();
+            GetComponentInChildren<TrailRenderer>().Clear();
+        }
+
         private void BulletTrajectory()
         {
             if (_waveFunction == null)

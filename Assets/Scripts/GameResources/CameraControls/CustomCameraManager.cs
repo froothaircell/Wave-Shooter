@@ -23,10 +23,14 @@ namespace GameResources.CameraControls
 
             _cinemachineVirtualCamera = gameObject.AddComponent<CinemachineVirtualCamera>();
             _cinemachineFramingTransposer = _cinemachineVirtualCamera.AddCinemachineComponent<CinemachineFramingTransposer>();
-            // _cinemachineLookNoise = _cinemachineVirtualCamera.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            _cinemachineLookNoise = _cinemachineVirtualCamera.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-            _cinemachineFramingTransposer.m_CameraDistance = 50f;
-            // _cinemachineLookNoise.m_AmplitudeGain = 1.2f;
+            _cinemachineVirtualCamera.m_Lens.FarClipPlane = 150f;
+            _cinemachineVirtualCamera.m_Lens.FieldOfView = 95f;
+            _cinemachineFramingTransposer.m_CameraDistance = 20f;
+            _cinemachineLookNoise.m_AmplitudeGain = 1.2f;
+            _cinemachineLookNoise.m_NoiseProfile =
+                AppHandler.AssetManager.LoadAsset<NoiseSettings>("Handheld_normal_mild");
 
             AppHandler.EventManager.Subscribe<REvent_PlayerSpawned>(OnShipSpawned, _disposables);
         }

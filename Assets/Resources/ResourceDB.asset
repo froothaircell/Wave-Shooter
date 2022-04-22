@@ -44,6 +44,9 @@ MonoBehaviour:
     _path: Prefabs
     retrievedObject: {fileID: 0}
   _otherResourceItems:
+  - _name: Handheld_normal_mild
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
   - _name: ResourceDB
     _path: 
     retrievedObject: {fileID: 0}
