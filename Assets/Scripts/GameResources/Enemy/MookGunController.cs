@@ -9,7 +9,7 @@ namespace GameResources.Enemy
         private MookGun _mookGun;
         private Coroutine _shootingCoroutine;
         private Transform _playerShip;
-        private float _fireRate = 0.5f;
+        private float _fireRate = 1f;
         
         public void OnInit()
         {

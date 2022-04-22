@@ -24,14 +24,15 @@ namespace GameResources.Bullet
         public virtual void OnSpawnedUpdate()
         {
             var currRT = Time.realtimeSinceStartup;
+            var frameLossFactor = Time.smoothDeltaTime / Time.deltaTime; // a bit of random tinkering. I don't think it changes much but it might at more frame drops
             var currTimeDif = currRT - RealTime;
             RealTime = currRT;
-            LocalTime += currTimeDif;
+            LocalTime += currTimeDif * frameLossFactor;
             if (LocalTime >= BulletLifetime)
             {
                 ReturnToPool();
             }
-            rb.MovePosition(rb.position + transform.up * BulletSpeed * currTimeDif);
+            rb.MovePosition(rb.position + transform.up * BulletSpeed * currTimeDif * frameLossFactor);
         }
 
         public virtual void OnDespawn()

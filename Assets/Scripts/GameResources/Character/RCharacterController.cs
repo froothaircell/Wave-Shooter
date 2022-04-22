@@ -10,8 +10,9 @@ namespace GameResources.Character
     public enum CharacterType
     {
         PlayerShip = 0,
-        Mook = 1,
-        Boss = 2
+        ShootingMook = 1,
+        KamikazeMook = 2,
+        Boss = 3
     }
     
     public abstract class RCharacterController : MonoBehaviour, IPooledCharacter
@@ -32,7 +33,7 @@ namespace GameResources.Character
                 _disposables = new List<IDisposable>();
         }
 
-        public virtual void OnSpawnedUpdate()
+        public virtual void Update()
         {
             foreach (var component in _components)
             {

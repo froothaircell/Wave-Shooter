@@ -19,7 +19,7 @@ MonoBehaviour:
   - _name: Boss1
     _path: Prefabs
     retrievedObject: {fileID: 0}
-  - _name: Mook1
+  - _name: KamikazeMook
     _path: Prefabs
     retrievedObject: {fileID: 0}
   - _name: MookBulletHellManager
@@ -29,6 +29,9 @@ MonoBehaviour:
     _path: Prefabs
     retrievedObject: {fileID: 0}
   - _name: SamplePlayer
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: ShootingMook
     _path: Prefabs
     retrievedObject: {fileID: 0}
   - _name: Stage

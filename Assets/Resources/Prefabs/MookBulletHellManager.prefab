@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b3b583b5c6d4f4cab32fe763227ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBullets: 1023
+  maxBullets: 300
   drawPriority: 0
   bulletSettings: {fileID: 11400000, guid: d6f7aa6df132f8949a6196c029216d9c, type: 2}
   spawnSettings: {fileID: 11400000, guid: 982362046ad998544960d94fd3e12fde, type: 2}

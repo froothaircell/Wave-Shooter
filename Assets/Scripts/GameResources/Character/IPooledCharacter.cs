@@ -5,7 +5,7 @@ namespace GameResources.Character
     public interface IPooledCharacter
     {
         void OnSpawn();
-        void OnSpawnedUpdate();
+        // void OnSpawnedUpdate();
         void OnDespawn();
         void OnCharacterDeath(REvent evt);
     }

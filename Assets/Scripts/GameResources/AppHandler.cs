@@ -39,7 +39,7 @@ namespace GameResources
             CameraManager = CustomCameraManager.Instance;
             
             CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
-            CharacterManager.SpawnMook(new Vector3(10, 10, -4), Quaternion.identity);
+            CharacterManager.SpawnMook(CharacterType.KamikazeMook, new Vector3(10, 10, -4), Quaternion.identity);
         }
     }
 }

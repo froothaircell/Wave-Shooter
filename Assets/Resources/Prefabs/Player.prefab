@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fdf520cd478d04ba1bf42b870c5cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 1
+  bulletDamage: 10
   bulletTranslationSpeed: 15
   _modType: 0
   _waveType: 0

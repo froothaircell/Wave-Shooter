@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using CoreResources.Utils;
 using CoreResources.Utils.Singletons;
 using GameResources.Enemy;
 using GameResources.Events;
@@ -15,19 +16,21 @@ namespace GameResources.Character
     {
         public GameObject PlayerShip { get; private set; }
         public GameObject Boss { get; private set; }
-        private GameObject Mook1;
+        private GameObject ShootingMook;
+        private GameObject KamikazeMook;
         private bool _playerShipSpawned => PlayerShip.activeSelf; // Change these later
         private bool _bossSpawned => Boss.activeSelf;
         private const int MaxSpawnedMooks = 10;
-        private Stack<GameObject> _mookPool;
+        // private Stack<GameObject> _mookPool;
+        private Dictionary<CharacterType, Stack<GameObject>> _mookPool;
         private GameObject[] _spawnedMooks;
         private int _mookSpawnCount = 0;
-        private Dictionary<int, int> _availableIndices;
+        private Dictionary<int, int> _availableIndices; // corresponds to the spawned mook array
         private Coroutine _mookUpdateCoroutine;
         
         // Change this later
         private readonly Vector3 _playerSpawnPoint = new Vector3(0, 4, -4);
-        private readonly Vector3 _mook1SpawnPoint = new Vector3(5, 10, -4);
+        private readonly Vector3 _mookSpawnPoint = new Vector3(5, 10, -4);
         private readonly Vector3 _bossSpawnPoint = new Vector3(0, 10, -4);
         private Quaternion _playerSpawnRotation;
 
@@ -37,7 +40,7 @@ namespace GameResources.Character
             // _playerShipSpawned = false;
             // _bossSpawned = false;
             _mookSpawnCount = 0;
-            _mookPool = new Stack<GameObject>();
+            _mookPool = new Dictionary<CharacterType, Stack<GameObject>>();
             _spawnedMooks = new GameObject[MaxSpawnedMooks];
             _availableIndices = new Dictionary<int, int>();
             _playerSpawnRotation = Quaternion.Euler(-90, 0, 0);
@@ -50,7 +53,8 @@ namespace GameResources.Character
         {
             PlayerShip = AppHandler.AssetManager.LoadAsset<GameObject>("Player");
             Boss = AppHandler.AssetManager.LoadAsset<GameObject>("Boss1");
-            Mook1 = AppHandler.AssetManager.LoadAsset<GameObject>("Mook1");
+            ShootingMook = AppHandler.AssetManager.LoadAsset<GameObject>("ShootingMook");
+            KamikazeMook = AppHandler.AssetManager.LoadAsset<GameObject>("KamikazeMook");
         }
 
         private void InstantiateCharacterPools()
@@ -59,12 +63,18 @@ namespace GameResources.Character
             Boss = Instantiate(Boss, _bossSpawnPoint, Quaternion.identity, transform);
             PlayerShip.SetActive(false);
             Boss.SetActive(false);
+            
+            _mookPool.Add(CharacterType.ShootingMook, new Stack<GameObject>());
+            _mookPool.Add(CharacterType.KamikazeMook, new Stack<GameObject>());
 
             for (int i = 0; i < MaxSpawnedMooks; i++)
             {
-                var GO = Instantiate(Mook1, transform.position, transform.rotation, transform);
+                var GO = Instantiate(ShootingMook, transform.position, transform.rotation, transform);
                 GO.SetActive(false);
-                _mookPool.Push(GO);
+                _mookPool[CharacterType.ShootingMook].Push(GO);
+                GO = Instantiate(KamikazeMook, transform.position, transform.rotation, transform);
+                GO.SetActive(false);
+                _mookPool[CharacterType.KamikazeMook].Push(GO);
                 _availableIndices.Add(i, i);
             }
         }
@@ -114,10 +124,16 @@ namespace GameResources.Character
             return Boss;
         }
 
-        public GameObject SpawnMook(Vector3 position, Quaternion rotation)
+        public GameObject SpawnMook(CharacterType MookType, Vector3 position, Quaternion rotation)
         {
+            if (MookType == CharacterType.Boss || MookType == CharacterType.PlayerShip)
+            {
+                Debug.LogError($"Incorrect Character type {MookType}");
+                return null;
+            }
+            
             GameObject GO;
-            if (!_mookPool.TryPop(out GO))
+            if (!_mookPool[MookType].TryPop(out GO))
                 throw new ObjectNotFoundException($"All available mooks are spawned right now. Try again later");
             GO.transform.position = position;
             GO.transform.rotation = rotation;
@@ -126,7 +142,7 @@ namespace GameResources.Character
             _spawnedMooks[Index] = GO;
             _mookSpawnCount++;
             GO.SetActive(true);
-            GO.GetComponent<IPooledCharacter>().OnSpawn(); // Causing problems
+            GO.GetComponent<IPooledCharacter>().OnSpawn();
             return GO;
         }
 
@@ -142,7 +158,8 @@ namespace GameResources.Character
                 case CharacterType.PlayerShip:
                     // Any logic necessary
                     break;
-                case CharacterType.Mook:
+                case CharacterType.ShootingMook:
+                case CharacterType.KamikazeMook:
                     var spawnIndex = character.GetComponent<MookController>().SpawnInd;
                     if (spawnIndex < 0)
                         throw new ArgumentException($"Mook is not spawned");
@@ -150,11 +167,11 @@ namespace GameResources.Character
                     {
                         throw new ArgumentOutOfRangeException($"Mook does not exist in the list of spawned objects");
                     }
-
+                    
                     _spawnedMooks[spawnIndex] = null;
-                    _availableIndices.Remove(spawnIndex);
+                    _availableIndices.Add(spawnIndex, spawnIndex);
                     _mookSpawnCount--;
-                    _mookPool.Push(character);
+                    _mookPool[charType].Push(character);
                     break;
                 case CharacterType.Boss:
                     // Any logic necessary
@@ -167,7 +184,7 @@ namespace GameResources.Character
             charController.OnDespawn();
         }
 
-        private void Update()
+        /*private void Update()
         {
             if (_mookSpawnCount > 0 && _mookUpdateCoroutine == null)
             {
@@ -178,18 +195,19 @@ namespace GameResources.Character
                 StopCoroutine(_mookUpdateCoroutine);
                 _mookUpdateCoroutine = null;
             }
-        }
+        }*/
 
-        private IEnumerator MookUpdateCoroutine()
+        /*private IEnumerator MookUpdateCoroutine()
         {
             int i = 0;
             while (true)
             {
-                yield return null;
+                yield return new WaitForFixedUpdate();
                 if (i >= MaxSpawnedMooks)
                 {
                     i = 0;
                 }
+
                 if (_availableIndices.ContainsKey(i))
                 {
                     i++;
@@ -199,6 +217,6 @@ namespace GameResources.Character
                 _spawnedMooks[i]?.GetComponent<IPooledCharacter>().OnSpawnedUpdate(); 
                 i++;
             }
-        }
+        }*/
     }
 }

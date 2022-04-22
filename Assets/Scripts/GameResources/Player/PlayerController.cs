@@ -14,17 +14,12 @@ namespace GameResources.Player
             AppHandler.EventManager.Subscribe<REvent_PlayerDeath>(OnCharacterDeath, _disposables);
         }
 
-        private void Update()
+        public override void Update()
         {
             foreach (var component in _components)
             {
                 component.OnUpdate();
             }
-        }
-
-        public override void OnSpawnedUpdate()
-        {
-            // Keeping this empty for now but if performance of the PoolManager suffices we'll put the update stuff here
         }
 
         public override void OnCharacterDeath(REvent evt)
