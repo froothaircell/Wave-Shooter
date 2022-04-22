@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 51148932581877809}
   - component: {fileID: 51148932581877806}
   m_Layer: 0
-  m_Name: MookBulletHellManager
+  m_Name: MookBulletManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

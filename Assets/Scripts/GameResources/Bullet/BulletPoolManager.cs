@@ -25,7 +25,8 @@ namespace GameResources.Bullet
         private int MookBulletDamage => _mookLevel; // Add nuance to the equation later
 
         // Reference to enemy bullet managers
-        private BulletManager MookBulletManager;
+        private BulletManager _mookBulletManager;
+        private BulletManager _mookExplosionManager;
 
         protected override void InitSingleton()
         {
@@ -45,10 +46,14 @@ namespace GameResources.Bullet
 
         private void LoadEnemyBulletManagers()
         {
-            var GO = AppHandler.AssetManager.LoadAsset<GameObject>("MookBulletHellManager");
+            var GO = AppHandler.AssetManager.LoadAsset<GameObject>("MookBulletManager");
             GO = Instantiate(GO, transform.position, transform.rotation, transform);
-            MookBulletManager = GO.GetComponent<BulletManager>();
-            MookBulletManager.GetBulletSettings().SetDamage(MookBulletDamage);
+            _mookBulletManager = GO.GetComponent<BulletManager>();
+            _mookBulletManager.GetBulletSettings().SetDamage(MookBulletDamage);
+            GO = AppHandler.AssetManager.LoadAsset<GameObject>("MookExplosionManager");
+            GO = Instantiate(GO, transform.position, transform.rotation, transform);
+            _mookExplosionManager = GO.GetComponent<BulletManager>();
+            _mookExplosionManager.GetBulletSettings().SetDamage(MookBulletDamage);
         }
 
         private void LoadBulletPools()
@@ -76,9 +81,14 @@ namespace GameResources.Bullet
             }
         }
 
+        public void SpawnEnemyExplosion(Vector3 position, Vector3 forward)
+        {
+            _mookExplosionManager.Spawn(position, forward);
+        }
+
         public void SpawnEnemyBullet(Vector3 position, Vector3 forward)
         {
-            MookBulletManager.Spawn(position, forward);
+            _mookBulletManager.Spawn(position, forward);
         }
 
         public GameObject SpawnPrimaryBullet(Vector3 position, Quaternion rotation, int damage = 1, 

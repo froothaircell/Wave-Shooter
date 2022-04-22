@@ -22,7 +22,10 @@ MonoBehaviour:
   - _name: KamikazeMook
     _path: Prefabs
     retrievedObject: {fileID: 0}
-  - _name: MookBulletHellManager
+  - _name: MookBulletManager
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
+  - _name: MookExplosionManager
     _path: Prefabs
     retrievedObject: {fileID: 0}
   - _name: Player
