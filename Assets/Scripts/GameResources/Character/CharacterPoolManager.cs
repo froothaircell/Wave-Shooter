@@ -6,6 +6,7 @@ using System.Linq;
 using CoreResources.Utils;
 using CoreResources.Utils.Singletons;
 using GameResources.Enemy;
+using GameResources.Enemy.Mook;
 using GameResources.Events;
 using UnityEngine;
 
@@ -32,7 +33,8 @@ namespace GameResources.Character
         private readonly Vector3 _playerSpawnPoint = new Vector3(0, 4, -4);
         private readonly Vector3 _mookSpawnPoint = new Vector3(5, 10, -4);
         private readonly Vector3 _bossSpawnPoint = new Vector3(0, 10, -4);
-        private Quaternion _playerSpawnRotation;
+        private Quaternion _defaultPlayerSpawnRotation;
+        private Quaternion _defaultBossSpawnRotation;
 
         protected override void InitSingleton()
         {
@@ -43,7 +45,8 @@ namespace GameResources.Character
             _mookPool = new Dictionary<CharacterType, Stack<GameObject>>();
             _spawnedMooks = new GameObject[MaxSpawnedMooks];
             _availableIndices = new Dictionary<int, int>();
-            _playerSpawnRotation = Quaternion.Euler(-90, 0, 0);
+            _defaultPlayerSpawnRotation = Quaternion.Euler(-90, 0, 0);
+            _defaultBossSpawnRotation = Quaternion.Euler(-90, 0, 0);
 
             LoadCharacterPools();
             InstantiateCharacterPools();
@@ -59,7 +62,7 @@ namespace GameResources.Character
 
         private void InstantiateCharacterPools()
         {
-            PlayerShip = Instantiate(PlayerShip, _playerSpawnPoint, _playerSpawnRotation, transform);
+            PlayerShip = Instantiate(PlayerShip, _playerSpawnPoint, _defaultPlayerSpawnRotation, transform);
             Boss = Instantiate(Boss, _bossSpawnPoint, Quaternion.identity, transform);
             PlayerShip.SetActive(false);
             Boss.SetActive(false);
@@ -93,7 +96,7 @@ namespace GameResources.Character
             else
             {
                 PlayerShip.transform.position = _playerSpawnPoint;
-                PlayerShip.transform.rotation = _playerSpawnRotation;
+                PlayerShip.transform.rotation = _defaultPlayerSpawnRotation;
             }
             
             PlayerShip.SetActive(true);
@@ -116,7 +119,7 @@ namespace GameResources.Character
             else
             {
                 Boss.transform.position = _bossSpawnPoint;
-                Boss.transform.rotation = Quaternion.identity;
+                Boss.transform.rotation = _defaultBossSpawnRotation;
             }
 
             Boss.SetActive(true);

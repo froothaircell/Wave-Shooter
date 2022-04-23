@@ -1,6 +1,6 @@
 ﻿using GameResources.Gun;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Mook
 {
     public class MookGun : RGun
     {

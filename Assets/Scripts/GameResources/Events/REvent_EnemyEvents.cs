@@ -14,4 +14,16 @@ namespace GameResources.Events
             AppHandler.EventManager.Dispatch(evt);
         }
     }
+    
+    public class REvent_BossDeath : REvent
+    {
+        public Transform BossTransform;
+
+        public static void Dispatch(Transform bossTransform)
+        {
+            var evt = Get<REvent_BossDeath>();
+            evt.BossTransform = bossTransform;
+            AppHandler.EventManager.Dispatch(evt);
+        }
+    }
 }

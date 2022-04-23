@@ -1,9 +1,7 @@
-﻿using CoreResources.Handlers.EventHandler;
-using GameResources.Character;
+﻿using GameResources.Character;
 using GameResources.Events;
-using UnityEngine;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Mook
 {
     public class ShootingMookController : MookController
     {

@@ -2,19 +2,20 @@
 using GameResources.Character;
 using UnityEngine;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Boss
 {
-    public class MookGunController : MonoBehaviour, ICharacterComponent
+    public class BossGunController : MonoBehaviour, ICharacterComponent
     {
-        private MookGun _mookGun;
+        private BossGun[] _bossGuns;
         private Coroutine _shootingCoroutine;
         private Transform _playerShip;
-        private float _fireRate = 1f;
+        private float _fireRate = 3f;
         
         public void OnInit()
         {
-            _mookGun = GetComponentInChildren<MookGun>();
-            _mookGun.InitGun();
+            _bossGuns = GetComponentsInChildren<BossGun>();
+            foreach(var bossGun in _bossGuns)
+                bossGun.InitGun();
             _playerShip = AppHandler.CharacterManager.PlayerShip.transform;
             _shootingCoroutine = StartCoroutine(ShootingCoroutine());
         }
@@ -31,7 +32,8 @@ namespace GameResources.Enemy
                 StopCoroutine(_shootingCoroutine);
                 _shootingCoroutine = null;
             }
-            _mookGun = null;
+
+            _bossGuns = null;
         }
 
         private IEnumerator ShootingCoroutine()
@@ -43,10 +45,12 @@ namespace GameResources.Enemy
                     OnDeInit();
                     yield break;
                 }
-                    
-                Vector3 lookDir = (_playerShip.position - transform.position).normalized;
-                transform.rotation = Quaternion.LookRotation(lookDir, -Vector3.forward);
-                _mookGun.FireBullet();
+
+                foreach (var bossGun in _bossGuns)
+                {
+                    bossGun.FireBullet();
+                }
+
                 yield return new WaitForSeconds(_fireRate);
             }
         }

@@ -1,8 +1,7 @@
 ﻿using CoreResources.Handlers.EventHandler;
 using GameResources.Character;
-using GameResources.Events;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Mook
 {
     public abstract class MookController : RCharacterController
     {

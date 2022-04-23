@@ -1,4 +1,4 @@
-﻿namespace GameResources.Enemy
+﻿namespace GameResources.Enemy.Mook
 {
     public class KamikaziMookStats : EnemyStats
     {

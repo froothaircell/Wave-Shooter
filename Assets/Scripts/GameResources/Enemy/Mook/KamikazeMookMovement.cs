@@ -1,7 +1,7 @@
 ﻿using GameResources.Character;
 using UnityEngine;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Mook
 {
     [RequireComponent(typeof(Rigidbody))]
     public class KamikazeMookMovement : MonoBehaviour, ICharacterComponent

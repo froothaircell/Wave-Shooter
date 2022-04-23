@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using GameResources.Character;
+﻿using GameResources.Character;
 using UnityEngine;
 
-namespace GameResources.Enemy
+namespace GameResources.Enemy.Mook
 {
     public class MookExplosionController: MonoBehaviour, ICharacterComponent
     {
