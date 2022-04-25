@@ -1,7 +1,7 @@
 using System;
 using CoreResources.Utils;
-using GameResources.Bullet;
 using GameResources.Gun;
+using GameResources.Projectiles.Bullet;
 using UnityEngine;
 
 namespace GameResources.Player

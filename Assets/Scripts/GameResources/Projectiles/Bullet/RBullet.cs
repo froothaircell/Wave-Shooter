@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameResources.Bullet
+namespace GameResources.Projectiles.Bullet
 {
-    public abstract class RBullet : MonoBehaviour, IPooledBullet
+    [RequireComponent(typeof(Rigidbody))]
+    public abstract class RBullet : MonoBehaviour, IPooledProjectile
     {
         public int Damage { get; private set; }
         public float BulletLifetime = 1f; // Despawn the bullet after this amount of time
@@ -49,7 +49,7 @@ namespace GameResources.Bullet
 
         public void ReturnToPool()
         {
-            AppHandler.BulletManager.ReturnToPool(gameObject);
+            AppHandler.BulletManager.ReturnBulletToPool(gameObject);
         }
     }
 }

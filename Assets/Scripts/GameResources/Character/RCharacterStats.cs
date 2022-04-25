@@ -8,7 +8,7 @@ namespace GameResources.Character
     public abstract class RCharacterStats : MonoBehaviour, ICharacterStats, ICharacterComponent
     {
         public int maxHealth = 200;
-        private int _health;
+        protected int _health;
 
         public abstract void OnInit();
 

@@ -7,12 +7,13 @@ namespace GameResources.Enemy.Boss
     [RequireComponent(typeof(BulletManager))]
     public class BossGun : RGun
     {
-        private BulletManager _gunBulletSpawner;
+        protected BulletManager _gunBulletSpawner;
         
         public override void InitGun()
         {
             _firePoint = transform;
             _gunBulletSpawner = GetComponent<BulletManager>();
+            _gunBulletSpawner.GetBulletSettings().SetDamage(bulletDamage);
         }
 
         public override void FireBullet()

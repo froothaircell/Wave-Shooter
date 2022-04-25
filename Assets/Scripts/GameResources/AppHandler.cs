@@ -2,9 +2,9 @@
 using CoreResources.Pool;
 using CoreResources.Utils.ResourceLoader;
 using CoreResources.Utils.Singletons;
-using GameResources.Bullet;
 using GameResources.CameraControls;
 using GameResources.Character;
+using GameResources.Projectiles.Bullet;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,8 +15,8 @@ namespace GameResources
         public static TypePool EventPool = new("EventPool");
         public static REventHandler EventManager;
         public static AssetLoader AssetManager;
+        public static ProjectilePoolManager BulletManager;
         public static CharacterPoolManager CharacterManager;
-        public static BulletPoolManager BulletManager;
         public static CustomCameraManager CameraManager;
 
         protected override void Awake()
@@ -35,7 +35,7 @@ namespace GameResources
             EventManager = REventHandler.SetInstanceType<REventHandler>();
             AssetManager = AssetLoader.SetInstanceType<AssetLoader>();
             CharacterManager = CharacterPoolManager.Instance;
-            BulletManager = BulletPoolManager.Instance;
+            BulletManager = ProjectilePoolManager.Instance;
             CameraManager = CustomCameraManager.Instance;
             
             CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);

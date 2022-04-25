@@ -14,6 +14,15 @@ namespace GameResources.Events
             AppHandler.EventManager.Dispatch(evt);
         }
     }
+
+    public class REvent_BossHalfHealth : REvent
+    {
+        public static void Dispatch()
+        {
+            var evt = Get<REvent_BossHalfHealth>();
+            AppHandler.EventManager.Dispatch(evt);
+        }
+    }
     
     public class REvent_BossDeath : REvent
     {

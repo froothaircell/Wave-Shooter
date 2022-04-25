@@ -22,6 +22,9 @@ MonoBehaviour:
   - _name: KamikazeMook
     _path: Prefabs
     retrievedObject: {fileID: 0}
+  - _name: Missile
+    _path: Prefabs
+    retrievedObject: {fileID: 0}
   - _name: MookBulletManager
     _path: Prefabs
     retrievedObject: {fileID: 0}

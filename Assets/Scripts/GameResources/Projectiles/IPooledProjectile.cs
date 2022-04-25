@@ -1,6 +1,6 @@
-﻿namespace GameResources.Bullet
+﻿namespace GameResources.Projectiles
 {
-    public interface IPooledBullet
+    public interface IPooledProjectile
     {
         int Damage { get; }
         

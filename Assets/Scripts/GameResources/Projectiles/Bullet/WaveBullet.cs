@@ -1,8 +1,7 @@
 ﻿using System;
-using CoreResources.Utils;
 using UnityEngine;
 
-namespace GameResources.Bullet
+namespace GameResources.Projectiles.Bullet
 {
     public enum ModulationType
     {

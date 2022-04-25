@@ -395,7 +395,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.1835e-41, y: 2.0387484e-38, z: 4.5697343e-37, w: 4.1326e-40}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: -2.1402055e-26}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -442,46 +442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1687701467283424015, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 3457790350726459613, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
     - target: {fileID: 3485886089053177469, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
-    - target: {fileID: 4147444867819553164, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 4203979882764553906, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 5456471622224342293, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 6079232676114156584, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 6266579774021768802, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6676835559430950576, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
-    - target: {fileID: 8228712850415984133, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4413ad71494e68e4e9e59c7fe4c360c5, type: 2}
     - target: {fileID: 8871253512879292991, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
       propertyPath: m_RootOrder
       value: 3

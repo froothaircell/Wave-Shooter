@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4436725081764030133}
   m_Layer: 0
   m_Name: KamikazeMook
-  m_TagString: Untagged
+  m_TagString: Mook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 7459065437812507081}
   m_Layer: 0
   m_Name: EnemyMesh
-  m_TagString: Untagged
+  m_TagString: Mook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8577763123069979923}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Mook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7301526732301121223}
   m_Layer: 0
   m_Name: MainBody
-  m_TagString: Untagged
+  m_TagString: Mook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 9149071948089675446}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Mook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

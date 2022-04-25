@@ -1,4 +1,4 @@
-﻿namespace GameResources.Bullet
+﻿namespace GameResources.Projectiles.Bullet
 {
     public class BasicBullet : RBullet
     {

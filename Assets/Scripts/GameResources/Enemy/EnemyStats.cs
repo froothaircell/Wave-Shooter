@@ -1,7 +1,7 @@
 ﻿using System;
-using GameResources.Bullet;
 using GameResources.Character;
 using GameResources.Events;
+using GameResources.Projectiles.Bullet;
 using UnityEngine;
 
 namespace GameResources.Enemy

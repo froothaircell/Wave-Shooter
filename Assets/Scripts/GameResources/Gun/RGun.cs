@@ -1,6 +1,4 @@
-﻿using GameResources.Character;
-using GameResources.Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GameResources.Gun
 {
@@ -10,8 +8,6 @@ namespace GameResources.Gun
         public float bulletTranslationSpeed = 10f;
         
         protected Transform _firePoint;
-        
-        public float PrimaryFireRate { get; private set; }
         
         public virtual void InitGun()
         {

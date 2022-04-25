@@ -1,4 +1,7 @@
-﻿namespace GameResources.Enemy.Mook
+﻿using System;
+using UnityEngine;
+
+namespace GameResources.Enemy.Mook
 {
     public class KamikaziMookStats : EnemyStats
     {
@@ -14,6 +17,14 @@
         {
             _explosionController.Explode();
             base.OnDeath();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (!collision.collider.CompareTag("PlayerBullet"))
+            {
+                TakeDamage(_health);
+            }
         }
     }
 }
