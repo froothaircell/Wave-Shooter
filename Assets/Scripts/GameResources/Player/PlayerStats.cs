@@ -23,9 +23,11 @@ namespace GameResources.Player
         private int _shield;
         private const int _totalDodges = 2; // should be alterable later
         private float _shieldRechargeTime = 4f; // Should be an equation
-        private float _dodgeRechargeTime = 1f; // based off of the level
+        private float _dodgeRechargeTime = 2f; // based off of the level
         private float _shieldTimer;
         private DodgeSlotState[] _dodgeSlotStates;
+
+        public Action<int> OnDamageTaken;
 
         public override void OnInit()
         {
@@ -72,9 +74,11 @@ namespace GameResources.Player
                 // Shield destroyed effect
             }
             base.TakeDamage(healthDed);
+
+            OnDamageTaken.Invoke(dmg);
         }
 
-        public async Task<bool> ConsumeDodge()
+        public bool ConsumeDodge()
         {
             for (int i = 0; i < _dodgeSlotStates.Length; i++)
             {
@@ -89,7 +93,7 @@ namespace GameResources.Player
             return false;
         }
 
-        private async Task CheckDodgeSlots()
+        /*private async Task CheckDodgeSlots()
         {
             List<Task> taskList = new List<Task>();
             for (int i = 0; i < _dodgeSlotStates.Length; i++)
@@ -102,18 +106,12 @@ namespace GameResources.Player
             }
 
             await Task.WhenAll(taskList);
-        }
+        }*/
 
         private async Task RefillDodge(int dodgeSlot)
         {
             _dodgeSlotStates[dodgeSlot] = DodgeSlotState.Refilling;
-            var initialTime = Time.realtimeSinceStartup;
-            var timer = (Time.realtimeSinceStartup - initialTime) / _dodgeRechargeTime;
-            while (timer < 1)
-            {
-                timer = (Time.realtimeSinceStartup - initialTime) / _dodgeRechargeTime;
-                Debug.Log(timer);
-            }
+            await Task.Delay((int) _dodgeRechargeTime * 1000);
 
             _dodgeSlotStates[dodgeSlot] = DodgeSlotState.Full;
         }

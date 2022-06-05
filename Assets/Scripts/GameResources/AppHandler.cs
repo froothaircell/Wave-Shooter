@@ -5,7 +5,7 @@ using CoreResources.Utils.Singletons;
 using GameResources.CameraControls;
 using GameResources.Character;
 using GameResources.Projectiles.Bullet;
-using UnityEditor;
+using GameResources.UI;
 using UnityEngine;
 
 namespace GameResources
@@ -18,6 +18,7 @@ namespace GameResources
         public static ProjectilePoolManager BulletManager;
         public static CharacterPoolManager CharacterManager;
         public static CustomCameraManager CameraManager;
+        public static RMenuHandler MenuManager;
 
         protected override void Awake()
         {
@@ -37,6 +38,7 @@ namespace GameResources
             CharacterManager = CharacterPoolManager.Instance;
             BulletManager = ProjectilePoolManager.Instance;
             CameraManager = CustomCameraManager.Instance;
+            MenuManager = RMenuHandler.Instance;
             
             CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
             // CharacterManager.SpawnMook(CharacterType.KamikazeMook, new Vector3(10, 10, -4), Quaternion.identity);

@@ -16,6 +16,16 @@ namespace GameResources.Character
 
         public abstract void OnDeInit();
 
+        public virtual float GetHealth()
+        {
+            return _health;
+        }
+
+        public virtual float GetHealthNormalized()
+        {
+            return (float) _health / maxHealth;
+        }
+
         public virtual void SetStats()
         {
             _health = maxHealth;

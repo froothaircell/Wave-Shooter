@@ -5,9 +5,7 @@ using CoreResources.Handlers.EventHandler;
 using CoreResources.Utils.Disposables;
 using GameResources.Character;
 using GameResources.Events;
-using GameResources.Projectiles.Missile;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameResources.Enemy.Boss
 {

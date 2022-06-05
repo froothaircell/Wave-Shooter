@@ -13,16 +13,37 @@ MonoBehaviour:
   m_Name: ResourceDB
   m_EditorClassIdentifier: 
   _prefabResourceItems:
+  - _name: CodeMonkeyAssets
+    _path: 
+    retrievedObject: {fileID: 0}
   - _name: BasicBullet
-    _path: Prefabs
+    _path: Prefabs/Characters
     retrievedObject: {fileID: 0}
   - _name: Boss1
-    _path: Prefabs
+    _path: Prefabs/Characters
     retrievedObject: {fileID: 0}
   - _name: KamikazeMook
-    _path: Prefabs
+    _path: Prefabs/Characters
     retrievedObject: {fileID: 0}
   - _name: Missile
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: Player
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: SamplePlayer
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: ShootingMook
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: Stage
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: WaveBullet
+    _path: Prefabs/Characters
+    retrievedObject: {fileID: 0}
+  - _name: AppHandler
     _path: Prefabs
     retrievedObject: {fileID: 0}
   - _name: MookBulletManager
@@ -31,19 +52,7 @@ MonoBehaviour:
   - _name: MookExplosionManager
     _path: Prefabs
     retrievedObject: {fileID: 0}
-  - _name: Player
-    _path: Prefabs
-    retrievedObject: {fileID: 0}
-  - _name: SamplePlayer
-    _path: Prefabs
-    retrievedObject: {fileID: 0}
-  - _name: ShootingMook
-    _path: Prefabs
-    retrievedObject: {fileID: 0}
-  - _name: Stage
-    _path: Prefabs
-    retrievedObject: {fileID: 0}
-  - _name: WaveBullet
+  - _name: PlayerUI
     _path: Prefabs
     retrievedObject: {fileID: 0}
   _otherResourceItems:

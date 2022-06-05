@@ -19,7 +19,7 @@ namespace GameResources.Player
         private Vector3 _movement;
         private Vector3 _mousePos;
         private bool _willDodge;
-        private Func<Task<bool>> _dodgeConsumeAction;
+        private Func<bool> _dodgeConsumeAction;
         private Coroutine _dodgeCoroutine;
 
         private RaycastHit _movementCollision;
@@ -45,7 +45,7 @@ namespace GameResources.Player
 
             if (Input.GetButtonDown("Jump") && _movement.magnitude > 0.9f)
             {
-                if (!_willDodge && _dodgeConsumeAction().GetAwaiter().GetResult())
+                if (!_willDodge && _dodgeConsumeAction())
                 {
                     _willDodge = true;
                     _dodgeCoroutine = StartCoroutine(DodgeSequence(_movement));

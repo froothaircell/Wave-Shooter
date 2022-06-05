@@ -4,7 +4,7 @@ namespace GameResources.Gun
 {
     public abstract class RGun : MonoBehaviour
     {
-        public int bulletDamage = 1;
+        public int bulletDamage = 10;
         public float bulletTranslationSpeed = 10f;
         
         protected Transform _firePoint;

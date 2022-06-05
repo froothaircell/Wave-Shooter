@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc23494da7c4e36be432d7a047f26a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 1
+  bulletDamage: 10
   bulletTranslationSpeed: 10
 --- !u!1 &6039037412472037163
 GameObject:
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc23494da7c4e36be432d7a047f26a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 1
+  bulletDamage: 10
   bulletTranslationSpeed: 10
 --- !u!1 &7761695185214664513
 GameObject:
@@ -918,5 +918,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc23494da7c4e36be432d7a047f26a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 1
+  bulletDamage: 10
   bulletTranslationSpeed: 10
