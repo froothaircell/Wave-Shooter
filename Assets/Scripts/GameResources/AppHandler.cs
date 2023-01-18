@@ -20,6 +20,10 @@ namespace GameResources
         public static CustomCameraManager CameraManager;
         public static RMenuHandler MenuManager;
 
+        public bool SpawnChar = false;
+        public bool SpawnMook = false;
+        public bool SpawnBoss = false;
+
         protected override void Awake()
         {
             base.Awake();
@@ -40,9 +44,9 @@ namespace GameResources
             CameraManager = CustomCameraManager.Instance;
             MenuManager = RMenuHandler.Instance;
             
-            CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
-            // CharacterManager.SpawnMook(CharacterType.KamikazeMook, new Vector3(10, 10, -4), Quaternion.identity);
-            CharacterManager.SpawnBoss(Vector3.zero, Quaternion.identity, true);
+            if (SpawnChar) CharacterManager.SpawnPlayerShip(Vector3.zero, Quaternion.identity, true);
+            if (SpawnMook) CharacterManager.SpawnMook(CharacterType.KamikazeMook, new Vector3(10, 10, -4), Quaternion.identity);
+            if (SpawnBoss) CharacterManager.SpawnBoss(Vector3.zero, Quaternion.identity, true);
         }
     }
 }

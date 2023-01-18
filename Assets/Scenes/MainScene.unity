@@ -513,6 +513,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4026630935493069430, guid: 2ba78f05bb43d9d44bdc98767666727d, type: 3}
+      propertyPath: SpawnBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026630935493069430, guid: 2ba78f05bb43d9d44bdc98767666727d, type: 3}
+      propertyPath: SpawnChar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026630935493069430, guid: 2ba78f05bb43d9d44bdc98767666727d, type: 3}
+      propertyPath: SpawnMook
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba78f05bb43d9d44bdc98767666727d, type: 3}
 --- !u!1001 &6266579773790998125
@@ -528,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485886089053177469, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8871253512879292991, guid: 4e4e6f40eb9b720489f90eba3c6d1198, type: 3}
       propertyPath: m_RootOrder
